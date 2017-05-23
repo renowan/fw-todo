@@ -167,8 +167,8 @@ img {
 }
 
 .item-todo {
-  margin-bottom: 30px;
-  padding: 0 20px;
+  margin-bottom: 10px;
+  padding: 0 10px;
 }
 
 .item-todo > li {
@@ -180,31 +180,68 @@ img {
   border: 1px solid #ccc;
   border-radius: 3px;
   opacity: .9;
-  
-  transition-property: opacity;
-  transition-duration: .5s;
 }
 
 .item-todo > li.is_deleted {
-  opacity: 0;
+  animation: fadeOut .3s;
 }
+@-webkit-keyframes fadeOut{
+  0% { opacity: .9; }
+  100% { opacity: 0; }
+}
+
+.item-todo > li.is_show {
+  animation: fadeIn .5s;
+}
+@-webkit-keyframes fadeIn{
+  0% { opacity: 0; }
+  100% { opacity: .9; }
+}
+
 .item-todo > li.is_hide {
   display: none;
+}
+
+.item-todo input {
+  padding: 2px 4px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 .button-delete {
   position: absolute;
   display: block;
-  text-align: center;
   right: 5px;
   top: 10px;
-  line-height: 1.7;
-  border: 1px solid #ccc;
-  border-radius: 2px;
   width: 20px;
   height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  line-height: 1.7;
+  text-align: center;
   cursor: pointer;
   background: #fff;
+}
+.button-delete:before {
+  content: "✕";
+}
+
+.button-add {
+  display: block;
+  margin-left: 10px;
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  line-height: 1.7;
+  text-align: center;
+  cursor: pointer;
+  background: #f3f3f3;
+  border: 1px solid #ccc;
+}
+.button-add:before {
+  content: "＋";
 }
 
 
