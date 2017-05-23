@@ -175,7 +175,6 @@ img {
   position: relative;
   display: block;
   margin-bottom: 4px;
-  padding: 10px 32px 10px 10px;
   background: #f3f3f3;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -183,7 +182,7 @@ img {
 }
 
 .item-todo > li.is_deleted {
-  animation: fadeOut .3s;
+  animation: fadeOut .5s;
 }
 @-webkit-keyframes fadeOut{
   0% { opacity: .9; }
@@ -202,10 +201,25 @@ img {
   display: none;
 }
 
-.item-todo input {
+.item-todo .item-text {
+  padding: 10px 32px 10px 10px;
+}
+.item-todo .item-text.is_hide {
+  display: none;
+}
+
+.item-todo .item-input {
+  padding: 10px 32px 10px 10px;
+  display: none;
+}
+.item-todo .item-input input {
   padding: 2px 4px;
+  width: 94%;
   border: 1px solid #ccc;
   border-radius: 3px;
+}
+.item-todo .item-input.is_show {
+  display: block;
 }
 
 .button-delete {
@@ -229,6 +243,7 @@ img {
 .button-add {
   display: block;
   margin-left: 10px;
+  margin-bottom: 25px;
   padding: 5px;
   width: 20px;
   height: 20px;
