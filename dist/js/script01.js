@@ -43,17 +43,24 @@
     },
     delete: function (e) {
       e.preventDefault();
-      
+
       if (!confirm('削除しますか？')) {return}
-      
+
       let index = $('.js-btnDel').index(this);
-      
-      $(this)
+
+      todo.deleteCore(this);
+    },
+    deleteCore: function (elm) {
+      let that = this;
+
+      $(elm)
         .closest('li')
         .removeClass('is_show')
         .addClass('is_deleted')
         .on('animationend webkitAnimationEnd oAnimationEnd mozAnimationEnd', function(){
-          $(this).addClass('is_hide');
+          $(this).remove();
+
+          that.save();
         });
     },
     add: function (e) {
@@ -81,22 +88,29 @@
       $('.js-text').removeClass('is_hide');
       $('.js-input').removeClass('is_show');
       $(this).addClass('is_hide');
+      let text = $(this).text();
       $(this)
         .siblings('.js-input')
         .addClass('is_show')
         .find('input')
+        .val(text)
         .focus();
     },
     set: function (e) {
       e.preventDefault();
 
       let value = $(this).find('input').val();
+
+      if (value === '') {
+        todo.deleteCore (this);
+        return
+      }
+
       $(this).removeClass('is_show');
       $(this)
         .siblings('.js-text')
         .removeClass('is_hide');
 
-      if (value === '') {return}
       $(this)
         .siblings('.js-text')
         .html(value);
@@ -112,17 +126,33 @@
         list.push($(this).text());
       });
       
-      if (list.length === 0) {return}
+      if (list.length === 0) {
+        todo.countZero();
+      }
       localStorage.setItem('todo', list);
 
       todo.load();
+    },
+    count: function () {
+      let that = this;
+
+      let count = $('.js-todo ul li').length;
+      $('.js-count').html(count);
+    },
+    countZero: function () {
+      let that = this;
+
+      $('.js-count').html('0');
     },
     load: function () {
       let that = this;
 
       let list = localStorage.getItem('todo');
 
-      if (!list) {return}
+      if (!list) {
+        todo.countZero();
+        return
+      }
       
       list = list.split(',');
 
@@ -140,6 +170,8 @@
         html += src.join('');
       }
       $('.js-todo ul').html(html);
+
+      todo.count();
     }
     
   };

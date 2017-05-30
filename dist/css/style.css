@@ -158,12 +158,23 @@ img {
 
 
 .h1 {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   padding: 10px;
   line-height: 1;
   font-size: 16px;
   background: #555;
   color: #fff;
+}
+
+.item-count {
+  margin-bottom: 5px;
+  padding: 0 10px;
+  text-align: right;
+}
+
+.item-count > span {
+  color: #c93;
+  font-weight: bold;
 }
 
 .item-todo {
