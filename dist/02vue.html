@@ -14,9 +14,21 @@
 
     <div class="js-todo">
         <p class="item-count"><span class="js-count">0</span> 件</p>
-        <ul class="item-todo"></ul>
+        <todo_list data="hoge, huga, piyo, punyo"></todo_list>
         <p class="button-add js-btnAdd"></p>
     </div>
+
+    <template id="js-template-todo">
+        <ul class="item-todo">
+            <li v-for="item in data.split(',')">
+                <p class="item-text js-text">{{ item }}</p>
+                <p class="item-input js-input">
+                    <input type="text">
+                </p>
+                <p class="button-delete js-btnDel"></p>
+            </li>
+        </ul>
+    </template>
 
     <script src="js/vendor/vue.min.js"></script>
     <script src="js/script02.js"></script>

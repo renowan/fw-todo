@@ -1,11 +1,17 @@
 {
 
+  Vue.component ('todo_list', {
+    props: [],
+    template: '#js-template-todo'
+  });
+
   new Vue({
     el: '.js-todo',
     data: {
-      text: 'テキストテキストテキスト'
+      data: ['hoge', 'huga', 'piyo', 'punyo']
     }
   });
+
 
 
 };
