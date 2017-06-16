@@ -12,12 +12,6 @@
 
     <h1 class="h1">to do list tool.</h1>
 
-    <div class="js-todo">
-        <p class="item-count"><span class="js-count">0</span> 件</p>
-        <todo_list data="hoge, huga, piyo, punyo"></todo_list>
-        <p class="button-add js-btnAdd"></p>
-    </div>
-
     <template id="js-template-todo">
         <ul class="item-todo">
             <li v-for="item in data.split(',')">
@@ -29,6 +23,12 @@
             </li>
         </ul>
     </template>
+
+    <div class="js-todo">
+        <p class="item-count"><span class="js-count">0</span> 件</p>
+        <todo_list data="hoge, huga, piyo, punyo"></todo_list>
+        <p class="button-add js-btnAdd"></p>
+    </div>
 
     <script src="js/vendor/vue.min.js"></script>
     <script src="js/script02.js"></script>

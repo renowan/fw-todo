@@ -1,14 +1,14 @@
 {
 
   Vue.component ('todo_list', {
-    props: [],
+    props: ['data'],
     template: '#js-template-todo'
   });
 
   new Vue({
     el: '.js-todo',
     data: {
-      data: ['hoge', 'huga', 'piyo', 'punyo']
+      data: []
     }
   });
 
