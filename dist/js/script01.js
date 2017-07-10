@@ -8,6 +8,8 @@
   
   
   let todo = {
+    
+    // init
     init: function () {
       let that = this;
       
@@ -22,6 +24,7 @@
       // event
       that.event (config);
     },
+    
     // event
     event: function (config) {
       let that = this;
@@ -41,6 +44,8 @@
       // input text to text
       $(config.component).on('blur', config.input, that.set);
     },
+    
+    // 削除
     delete: function (e) {
       e.preventDefault();
 
@@ -63,6 +68,8 @@
           that.save();
         });
     },
+    
+    // 追加
     add: function (e) {
       e.preventDefault();
 
@@ -82,6 +89,8 @@
         .find('input')
         .focus();
     },
+    
+    // 入力
     input: function (e) {
       e.preventDefault();
 
@@ -117,6 +126,8 @@
       
       todo.save();
     },
+    
+    // 保存
     save: function () {
       let that = this;
 
@@ -133,6 +144,8 @@
 
       todo.load();
     },
+    
+    // 総数
     count: function () {
       let that = this;
 
@@ -144,6 +157,8 @@
 
       $('.js-count').html('0');
     },
+    
+    // 初期表示
     load: function () {
       let that = this;
 
