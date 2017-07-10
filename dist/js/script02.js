@@ -1,14 +1,18 @@
 {
 
-  Vue.component ('todo_list', {
-    props: ['data'],
+  Vue.component ('todo', {
     template: '#js-template-todo'
   });
 
   new Vue({
     el: '.js-todo',
-    data: {
-      data: []
+    components: {
+
+    },
+    computed: {
+      leng () {
+        return 3
+      }
     }
   });
 
