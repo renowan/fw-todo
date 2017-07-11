@@ -8,21 +8,23 @@
   
   
   let todo = {
+
+    // config
+    config: {
+      component: '.js-todo',
+      text: '.js-text',
+      input: '.js-input',
+      delete: '.js-btnDel',
+      add: '.js-btnAdd',
+      storage_key: 'todo'
+    },
     
     // init
     init: function () {
       let that = this;
       
-      let config = {
-        component: '.js-todo',
-        text: '.js-text',
-        input: '.js-input',
-        delete: '.js-btnDel',
-        add: '.js-btnAdd'
-      };
-      
       // event
-      that.event (config);
+      that.event (that.config);
     },
     
     // event
@@ -94,17 +96,18 @@
     input: function (e) {
       e.preventDefault();
 
-      $('.js-text').removeClass('is_hide');
-      $('.js-input').removeClass('is_show');
+      $('.js-todo li').removeClass('is_edited');
       $(this).addClass('is_hide');
       let text = $(this).text();
       $(this)
-        .siblings('.js-input')
-        .addClass('is_show')
+        .closest('li')
+        .addClass('is_edited')
         .find('input')
         .val(text)
         .focus();
     },
+    
+    // 入力値テキスト反映
     set: function (e) {
       e.preventDefault();
 
@@ -115,10 +118,7 @@
         return
       }
 
-      $(this).removeClass('is_show');
-      $(this)
-        .siblings('.js-text')
-        .removeClass('is_hide');
+      $(this).closest('li').removeClass('is_edited');
 
       $(this)
         .siblings('.js-text')
@@ -140,7 +140,7 @@
       if (list.length === 0) {
         todo.countZero();
       }
-      localStorage.setItem('todo', list);
+      localStorage.setItem(that.config.storage_key, list);
 
       todo.load();
     },
@@ -162,7 +162,7 @@
     load: function () {
       let that = this;
 
-      let list = localStorage.getItem('todo');
+      let list = localStorage.getItem(that.config.storage_key);
 
       if (!list) {
         todo.countZero();

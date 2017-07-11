@@ -14,12 +14,12 @@
     
     <template id="js-template-todo">
         <div>
-            <p class="item-count"><span class="js-count">{{leng}}</span> 件</p>
-            <ul class="item-todo">
-                <li v-for="item in list">
-                    <p class="item-text js-text">{{item.name}}</p>
-                    <p class="item-input js-input"><input type="text"></p>
-                    <p class="button-delete js-btnDel" @click="remove(item)"></p>
+            <p class="item-count"><span>{{leng}}</span> 件</p>
+            <ul class="item-todo" id="js-item-todo">
+                <li v-for="item in list" @click="input(item, list)" v-bind:class="{'is_edited': isEdited}">
+                    <p class="item-text">{{item}}</p>
+                    <p class="item-input"><input type="text" v-model="item"></p>
+                    <p class="button-delete" @click="remove(item, list)"></p>
                 </li>
             </ul>
             <p class="button-add" @click="add(item)"></p>

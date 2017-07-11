@@ -214,8 +214,9 @@ img {
 
 .item-todo .item-text {
   padding: 10px 32px 10px 10px;
+  font-size: 12px;
 }
-.item-todo .item-text.is_hide {
+.item-todo li.is_edited .item-text {
   display: none;
 }
 
@@ -228,8 +229,9 @@ img {
   width: 94%;
   border: 1px solid #ccc;
   border-radius: 3px;
+  font-size: 12px;
 }
-.item-todo .item-input.is_show {
+.item-todo li.is_edited .item-input {
   display: block;
 }
 
