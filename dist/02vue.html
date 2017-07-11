@@ -16,13 +16,13 @@
         <div>
             <p class="item-count"><span>{{leng}}</span> 件</p>
             <ul class="item-todo" id="js-item-todo">
-                <li v-for="item in list" @click="input(item, list)">
-                    <p class="item-text">{{item}}</p>
-                    <p class="item-input"><input type="text" v-model="item"></p>
-                    <p class="button-delete" @click="remove(item, list)"></p>
+                <li v-for="item in list">
+                    <p class="item-text" v-on:click="input(item, list)">{{item}}</p>
+                    <p class="item-input"><input type="text" v-model="item" v-on:blur="set(item, list)"></p>
+                    <p class="button-delete" v-on:click="remove(item, list)"></p>
                 </li>
             </ul>
-            <p class="button-add" @click="add(item)"></p>
+            <p class="button-add" v-on:click="add(item)"></p>
         </div>
     </template>
     

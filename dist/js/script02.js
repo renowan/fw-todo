@@ -41,7 +41,7 @@
         elm.classList.add('is_edited');
       },
       set (item, list) {
-        console.log(item);
+        console.log('set');
       }
     }
   });
