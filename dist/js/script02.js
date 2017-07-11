@@ -35,7 +35,9 @@
         let elms = document.getElementById('js-item-todo').getElementsByTagName('li');
         let elm = elms[idx];
         
-        elm.classList.remove('is_edited');
+        for (let i = 0, leng = elms.length; i < leng; i++) {
+          elms[i].classList.remove('is_edited');
+        }
         elm.classList.add('is_edited');
       },
       set (item, list) {
