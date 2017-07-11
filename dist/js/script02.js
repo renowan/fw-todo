@@ -12,7 +12,7 @@
     },
     data () {
       return {
-        list: localStorage.getItem('todo').split(','),
+        list: localStorage.getItem('todo').split(',') || ['　'],
         isEdited: false
       }
     },
@@ -31,11 +31,12 @@
         this.list = arr;
       },
       input (item, list) {
-//        let idx = list.indexOf(item);
-//        let elm = document.getElementById('js-item-todo').getElementsByTagName('li')[idx];
+        let idx = list.indexOf(item);
+        let elms = document.getElementById('js-item-todo').getElementsByTagName('li');
+        let elm = elms[idx];
         
-        this.isEdited = !this.isEdited;
-        
+        elm.classList.remove('is_edited');
+        elm.classList.add('is_edited');
       },
       set (item, list) {
         console.log(item);

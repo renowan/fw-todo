@@ -76,9 +76,9 @@
       e.preventDefault();
 
       let html = [
-        '<li>',
-          '<p class="item-text js-text is_hide"></p>',
-          '<p class="item-input js-input is_show">',
+        '<li class="is_edited">',
+          '<p class="item-text js-text"></p>',
+          '<p class="item-input js-input">',
             '<input type="text">',
           '</p>',
           '<p class="button-delete js-btnDel"></p>',
