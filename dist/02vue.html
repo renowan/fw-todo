@@ -11,12 +11,22 @@
 <body>
 
     <h1 class="h1">to do list tool.</h1>
-
-    <div class="js-todo">
-        <p class="item-count"><span class="js-count">0</span> 件</p>
-        <ul class="item-todo"></ul>
-        <p class="button-add js-btnAdd"></p>
-    </div>
+    
+    <template id="js-template-todo">
+        <div>
+            <p class="item-count"><span>{{leng}}</span> 件</p>
+            <ul class="item-todo" id="js-item-todo">
+                <li v-for="item in list" @click="input(item, list)" v-bind:class="{'is_edited': isEdited}">
+                    <p class="item-text">{{item}}</p>
+                    <p class="item-input"><input type="text" v-model="item"></p>
+                    <p class="button-delete" @click="remove(item, list)"></p>
+                </li>
+            </ul>
+            <p class="button-add" @click="add(item)"></p>
+        </div>
+    </template>
+    
+    <todo class="js-todo"></todo>
 
     <script src="js/vendor/vue.min.js"></script>
     <script src="js/script02.js"></script>
