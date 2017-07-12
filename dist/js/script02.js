@@ -1,9 +1,6 @@
 {
 
   Vue.component ('todo', {
-    config: {
-      storage_key: 'todo'
-    },
     template: '#js-template-todo',
     computed: {
       leng () {
@@ -13,7 +10,8 @@
     data () {
       return {
         list: localStorage.getItem('todo').split(',') || ['　'],
-        isEdited: false
+        isEdited: false,
+        item: ''
       }
     },
     created () {
@@ -38,6 +36,7 @@
         for (let i = 0, leng = elms.length; i < leng; i++) {
           elms[i].classList.remove('is_edited');
         }
+        
         elm.classList.add('is_edited');
       },
       set (item, list) {
