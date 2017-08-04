@@ -16,9 +16,9 @@
         <div>
             <p class="item-count"><span>{{leng}}</span> 件</p>
             <ul class="item-todo" id="js-item-todo">
-                <li v-for="(item, index) in list" :key="item.id">
+                <li v-for="(item, index) in list" :key="item.id" v-bind:class="{'is_show': isShow, 'is_hide': isHide}">
                     <p class="item-text" @click="input(item, list)">{{ item.title }}</p>
-                    <p class="item-input"><input type="text" v-model="item" @blur="set(item, list)"></p>
+                    <p class="item-input"><input type="text" v-model="item.title" @blur="set(item, list)"></p>
                     <p class="button-delete" @click="remove(item, list)"></p>
                 </li>
             </ul>

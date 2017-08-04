@@ -12,7 +12,9 @@
       return {
         list: JSON.parse(localStorage.getItem('todo')) || ['　'],
         isEdited: false,
-        item: ''
+        item: '',
+        isShow: true,
+        isHide: false
       }
     },
     created () {
@@ -42,6 +44,10 @@
       },
       set (item, list) {
         console.log('set');
+
+        for (let i = 0, leng = elms.length; i < leng; i++) {
+          elms[i].classList.remove('is_edited');
+        }
       }
     }
   });
