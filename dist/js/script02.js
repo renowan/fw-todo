@@ -4,7 +4,8 @@
     template: '#js-template-todo',
     computed: {
       leng () {
-        return this.list.length
+        let leng = (this.list == '　')? 0: this.list.length
+        return leng
       }
     },
     data () {
