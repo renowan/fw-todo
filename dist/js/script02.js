@@ -9,7 +9,7 @@
     },
     data () {
       return {
-        list: localStorage.getItem('todo').split(',') || ['　'],
+        list: JSON.parse(localStorage.getItem('todo')) || ['　'],
         isEdited: false,
         item: ''
       }
@@ -23,9 +23,9 @@
       },
       remove (item, list) {
         let idx = list.indexOf(item);
-        let arr = localStorage.getItem('todo').split(',');
+        let arr = JSON.parse(localStorage.getItem('todo'));
         arr.splice(idx, 1);
-        localStorage.setItem('todo', arr);
+        localStorage.setItem('todo', JSON.stringify(arr));
         this.list = arr;
       },
       input (item, list) {

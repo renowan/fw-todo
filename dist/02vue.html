@@ -17,7 +17,7 @@
             <p class="item-count"><span>{{leng}}</span> 件</p>
             <ul class="item-todo" id="js-item-todo">
                 <li v-for="(item, index) in list" :key="item.id">
-                    <p class="item-text" @click="input(item, list)">{{ item }}</p>
+                    <p class="item-text" @click="input(item, list)">{{ item.title }}</p>
                     <p class="item-input"><input type="text" v-model="item" @blur="set(item, list)"></p>
                     <p class="button-delete" @click="remove(item, list)"></p>
                 </li>
