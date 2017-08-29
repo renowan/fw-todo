@@ -167,7 +167,7 @@ img {
 }
 
 .item-count {
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   padding: 0 10px;
   text-align: right;
 }
@@ -224,7 +224,7 @@ img {
   padding: 10px 32px 10px 10px;
   display: none;
 }
-.item-todo .item-input input {
+.item-todo .item-input > input {
   padding: 2px 4px;
   width: 94%;
   border: 1px solid #ccc;
@@ -233,6 +233,22 @@ img {
 }
 .item-todo li.is_edited .item-input {
   display: block;
+}
+
+.item-todo--input {
+  margin-bottom: 4px;
+}
+
+.item-todo--input .item-input > input {
+  width: 100%;
+}
+
+.item-todo--input.is_show {
+  display: block;
+}
+
+.item-todo--input.is_hide {
+  display: none;
 }
 
 .button-delete {
@@ -270,6 +286,9 @@ img {
 }
 .button-add:before {
   content: "＋";
+}
+.button-add--pre {
+  margin-bottom: 5px;
 }
 
 

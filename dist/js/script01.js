@@ -76,9 +76,9 @@
       e.preventDefault();
 
       let html = [
-        '<li>',
-          '<p class="item-text js-text is_hide"></p>',
-          '<p class="item-input js-input is_show">',
+        '<li class="is_edited">',
+          '<p class="item-text js-text"></p>',
+          '<p class="item-input js-input">',
             '<input type="text">',
           '</p>',
           '<p class="button-delete js-btnDel"></p>',
@@ -134,13 +134,16 @@
       let list = [];
       $('.js-text').each(function () {
         if ($(this).text() === '') {return}
-        list.push($(this).text());
+        let data = {
+          title: $(this).text()
+        };
+        list.push(data);
       });
-      
+
       if (list.length === 0) {
         todo.countZero();
       }
-      localStorage.setItem(that.config.storage_key, list);
+      localStorage.setItem(that.config.storage_key, JSON.stringify(list));
 
       todo.load();
     },
@@ -162,20 +165,18 @@
     load: function () {
       let that = this;
 
-      let list = localStorage.getItem(that.config.storage_key);
+      let list = JSON.parse(localStorage.getItem(that.config.storage_key));
 
       if (!list) {
         todo.countZero();
         return
       }
-      
-      list = list.split(',');
 
       let html = '';
       for (let i = 0, leng = list.length; i < leng; i++) {
         let src = [
             '<li>',
-              '<p class="item-text js-text">' + list[i] + '</p>',
+              '<p class="item-text js-text">' + list[i].title + '</p>',
               '<p class="item-input js-input">',
                 '<input type="text">',
               '</p>',
