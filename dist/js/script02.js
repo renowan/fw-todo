@@ -4,7 +4,7 @@
     template: '#js-template-todo',
     computed: {
       leng () {
-        let leng = (this.list == '　')? 0: this.list.length
+        const leng = (this.list == '　')? 0: this.list.length
         return leng
       }
     },
@@ -23,11 +23,14 @@
 
     },
     methods: {
-      add (e) {
-        const targetAdd = document.getElementById('js-item-add');
-        targetAdd.getElementsByTagName('input')[0].focus();
+      add () {
+        console.log('add');
+        
         this.add_isShow = !this.add_isShow;
         this.add_isHide = !this.add_isHide;
+
+        const elm = document.getElementById('js-item-add');
+        elm.getElementsByTagName('input')[0].focus();
       },
       addSet () {
         console.log('addSet');
@@ -44,7 +47,7 @@
         listArr.push(data);
         
         const target = document.getElementById('js-item-todo');
-        let elms = target.getElementsByTagName('li');
+        const elms = target.getElementsByTagName('li');
         for (let i = 0, leng = elms.length; i < leng; i++) {
           elms[i].classList.remove('is_edited');
           let val = elms[i].getElementsByTagName('input')[0].value;
@@ -55,12 +58,16 @@
           };
           listArr.push(data);
         }
-        localStorage.setItem('todo', JSON.stringify(listArr));
 
         this.add_isShow = !this.add_isShow;
         this.add_isHide = !this.add_isHide;
+
+        localStorage.setItem('todo', JSON.stringify(listArr));
+        this.list = listArr;
       },
       remove (item, list) {
+        console.log('remove');
+        
         if (!confirm('削除しますか？')) {return}
         let idx = list.indexOf(item);
         let arr = JSON.parse(localStorage.getItem('todo'));
@@ -69,8 +76,10 @@
         this.list = arr;
       },
       input (item, list) {
+        console.log('input');
+        
         let idx = list.indexOf(item);
-        let elms = document.getElementById('js-item-todo').getElementsByTagName('li');
+        const elms = document.getElementById('js-item-todo').getElementsByTagName('li');
         let elm = elms[idx];
         
         for (let i = 0, leng = elms.length; i < leng; i++) {
@@ -82,7 +91,8 @@
       },
       set (item, list) {
         console.log('set');
-        let elms = document.getElementById('js-item-todo').getElementsByTagName('li');
+        
+        const elms = document.getElementById('js-item-todo').getElementsByTagName('li');
         let listArr = [];
         for (let i = 0, leng = elms.length; i < leng; i++) {
           elms[i].classList.remove('is_edited');
@@ -99,7 +109,7 @@
     }
   });
 
-  new Vue({
+  let vm = new Vue({
     el: '.js-todo'
   });
 
