@@ -4,13 +4,13 @@
     template: '#js-template-todo',
     computed: {
       leng () {
-        const leng = (this.list == '　')? 0: this.list.length
+        const leng = (this.list.length)? this.list.length: 0
         return leng
       }
     },
     data () {
       return {
-        list: JSON.parse(localStorage.getItem('todo')) || ['　'],
+        list: JSON.parse(localStorage.getItem('todo')) || {},
         isEdited: false,
         item: '',
         todo_isShow: true,
@@ -20,12 +20,9 @@
       }
     },
     created () {
-
     },
     methods: {
       add () {
-        console.log('add');
-        
         this.add_isShow = !this.add_isShow;
         this.add_isHide = !this.add_isHide;
 
@@ -33,10 +30,8 @@
         elm.getElementsByTagName('input')[0].focus();
       },
       addSet () {
-        console.log('addSet');
-
         const targetAdd = document.getElementById('js-item-add');
-        let valAdd = targetAdd.getElementsByTagName('input')[0].value;
+        const valAdd = targetAdd.getElementsByTagName('input')[0].value;
         
         if (valAdd === '') {return}
 
@@ -64,10 +59,9 @@
 
         localStorage.setItem('todo', JSON.stringify(listArr));
         this.list = listArr;
+        targetAdd.getElementsByTagName('input')[0].value = '';
       },
       remove (item, list) {
-        console.log('remove');
-        
         if (!confirm('削除しますか？')) {return}
         let idx = list.indexOf(item);
         let arr = JSON.parse(localStorage.getItem('todo'));
@@ -76,8 +70,6 @@
         this.list = arr;
       },
       input (item, list) {
-        console.log('input');
-        
         let idx = list.indexOf(item);
         const elms = document.getElementById('js-item-todo').getElementsByTagName('li');
         let elm = elms[idx];
@@ -90,8 +82,6 @@
         elm.getElementsByTagName('input')[0].focus();
       },
       set (item, list) {
-        console.log('set');
-        
         const elms = document.getElementById('js-item-todo').getElementsByTagName('li');
         let listArr = [];
         for (let i = 0, leng = elms.length; i < leng; i++) {
@@ -108,8 +98,7 @@
       }
     }
   });
-
-  let vm = new Vue({
+  new Vue({
     el: '.js-todo'
   });
 

@@ -16,7 +16,7 @@
         <div>
             <p class="item-count"><span>{{leng}}</span> 件</p>
             <p class="button-add button-add--pre" @click="add(item)"></p>
-            <ul class="item-todo item-todo--input" id="js-item-add" v-bind:class="{'is_show': add_isShow, 'is_hide': add_isHide}">
+            <ul class="item-todo item-todo--input" id="js-item-add" v-bind:class="{'is_show': add_isShow, 'is_hide': add_isHide}" >
                 <li class="is_edited">
                     <p class="item-input"><input type="text" @blur="addSet()"></p>
                 </li>
