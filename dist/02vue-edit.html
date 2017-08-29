@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>todo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <h1 class="h1">to do list tool. - Vue</h1>
+
+    <template id="todo-item">
+      <div>
+        <!-- editモード -->
+        <ul class="item-todo" v-if="isEdit">
+          <li class="is_show is_edited">
+            <p class="item-input">
+              <input type="text" :value="title" @input="onChange" @blur="isEdit = false">
+            </p>
+          </li>
+        </ul>
+        <!-- 表示モード -->
+        <ul class="item-todo" v-else>
+          <li>
+            <p class="item-text" @click="isEdit = true">{{title}}</p>
+            <p class="button-delete" @click="remove"></p>
+          </li>
+        </ul>
+
+      </div>
+    </template>
+
+
+    <div id="app">
+      <p class="item-count"><span>{{list.length}}</span> 件</p>
+      <p class="item-count"><span>{{count}}</span> count</p>
+      <p class="button-add button-add--pre" @click="add"></p>
+
+      <todo-item v-for="item in list"
+      :title="item.title"
+      :id="item.id"
+      @on-change="onChange"
+      @remove="remove">
+      </todo-item>
+
+    </div>
+
+    <script src="js/vendor/vue.min.js"></script>
+    <script src="js/script02-edit.js"></script>
+</body>
+
+</html>
